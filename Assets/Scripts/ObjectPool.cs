@@ -26,16 +26,20 @@ public class ObjectPool : MonoBehaviour
     {
         if (bulletPool.Count > 0)
         {
+            //Take the next available bullet from the pool
             GameObject bullet = bulletPool.Dequeue();
             bullet.SetActive(true);
             return bullet;
         }
         else
         {
+            //if pool runs out, create a new bullet
             GameObject newBullet = Instantiate(bulletPrefab);
             return newBullet;
         }
     }
+
+    //Return bullet back to the pool for future reuse
     public void ReturnBullet(GameObject bullet)
     {
         bullet.SetActive(false);

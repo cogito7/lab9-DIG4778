@@ -14,12 +14,12 @@ public class Bullet : MonoBehaviour
     {
         ObjectPool.Instance.ReturnBullet(gameObject);
     }
+
+    // Handle collision with targets
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trigger: " + collision.tag);
         if (collision.CompareTag("Target"))
         {
-            Debug.Log("target");
             collision.GetComponent<Target>().Hit();
             ObjectPool.Instance.ReturnBullet(gameObject);
         }
