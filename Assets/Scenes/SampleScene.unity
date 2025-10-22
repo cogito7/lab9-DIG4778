@@ -556,6 +556,7 @@ GameObject:
   - component: {fileID: 1311463013}
   - component: {fileID: 1311463012}
   - component: {fileID: 1311463014}
+  - component: {fileID: 1311463015}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -744,6 +745,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1311463015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311463006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2308f963f248168419d77aeda4f90486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saveID: Player
 --- !u!1 &1600510502
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +769,7 @@ GameObject:
   - component: {fileID: 1600510505}
   - component: {fileID: 1600510504}
   - component: {fileID: 1600510503}
+  - component: {fileID: 1600510506}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -822,6 +837,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1600510506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1600510502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc520cd1d67ba0847ba677ea9c184f27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveFileName: savefile.json
 --- !u!1 &1721871577
 GameObject:
   m_ObjectHideFlags: 0
