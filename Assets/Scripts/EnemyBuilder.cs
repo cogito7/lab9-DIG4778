@@ -1,7 +1,7 @@
 using UnityEngine;
 
 // Builds an ememy with the builder pattern
-public class EnemyBuilder : MonoBehaviour
+public class EnemyBuilder
 {
     private GameObject enemy;
     private Target targetScript;

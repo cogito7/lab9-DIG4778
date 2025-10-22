@@ -34,14 +34,5 @@ public class Target : MonoBehaviour
         // Destroy after short delay for animation
         Destroy(gameObject, 0.4f);
     }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("PlayerBullet"))
-        {
-            Hit();
-            Destroy(collision.gameObject); // destroy bullet
-        }
-    }
 }
 
