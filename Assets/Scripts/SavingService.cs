@@ -2,6 +2,9 @@ using LitJson;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.ComTypes;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor.SearchService;
@@ -70,6 +73,13 @@ public static class SavingService
         Debug.LogFormat("Wrote saved game to {0}", outputPath);
         result = null;
         System.GC.Collect();
+
+        // Serialize score to binary format
+        using (BinaryWriter binaryWriter = new BinaryWriter(File.Open(outputPath + ".dat", FileMode.Create)))
+        {
+            int score = ScoreManager.instance.score;
+            binaryWriter.Write(score);
+        }
     }
 
     // Returns true if loading is successful
@@ -131,6 +141,7 @@ public static class SavingService
         if (data.ContainsKey(OBJECTS_KEY))
         {
             var objects = data[OBJECTS_KEY];
+            var loadScore = true;
             UnityAction<UnityEngine.SceneManagement.Scene, LoadSceneMode> LoadObjectsAfterSceneLoad;
             LoadObjectsAfterSceneLoad = (scene, loadSceneMode) => {
                 var allLoadableObjects = Object.FindObjectsByType<MonoBehaviour>(FindObjectsSortMode.None).OfType<ISaveable>().ToDictionary(o => o.SaveID, o => o);
@@ -150,12 +161,32 @@ public static class SavingService
                 //SceneManager.sceneLoaded -= LoadObjectsAfterSceneLoad;
                 //LoadObjectsAfterSceneLoad = null;
 
+
                 // Clear objects after they've been loaded
                 objects.Clear();
                 System.GC.Collect();
+
+                if (loadScore)
+                {
+                    // Deserialize score
+                    //BinaryFormatter formatter = new BinaryFormatter();
+                    //var binaryData = File.ReadAllBytes();
+                    //var stream = new MemoryStream(binaryData);
+                    //ScoreManager.instance.score = (int)formatter.Deserialize(stream);
+                    using (BinaryReader reader = new BinaryReader(File.Open(dataPath + ".dat", FileMode.Open)))
+                    {
+                        ScoreManager.instance.score = reader.ReadInt32();
+                        ScoreManager.instance.AddScore(0);
+                    }
+
+                    loadScore = false;
+                }
             };
             SceneManager.sceneLoaded += LoadObjectsAfterSceneLoad;
         }
+
+
+
         return true;
     }
 }

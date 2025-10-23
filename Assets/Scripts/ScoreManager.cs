@@ -5,7 +5,16 @@ public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
     public Text scoreText;
-    private int score = 0;
+    public int score = 0;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            this.score = instance.score;
+            UpdateScoreText();
+        }
+        instance = this;
+    }
     private void OnEnable()
     {
         Target.OnTargetHit += AddScore; // subscribe
