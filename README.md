@@ -1,8 +1,7 @@
-Lab 9
+Lab 10
 =====
 
 > Melanie Galindo Waugh
 
-This is a super cool lab that I did using Object Pooling for the bullets, Builder Pattern for the enemies, and Observer Pattern for the way the score is updated when a target is hit. In this 2D Shooting game, the Object Pool Pattern is implemented through a bullet pool that reuses inactive bullets instead of creating and destroying them each time the player fires, improving performance. The Builder Pattern is used in the enemy spawning system, where an EnemyBuilder constructs different enemy types with custom values before they appear at the top of the screen. The Observer Pattern connects the targets and the score system: each Target broadcasts an OnTargetHit event when destroyed, and the ScoreManager observes this event to update the player score in real time. Together, these implementations keep the game efficient, modular, and easy to extend.
+I used the 2D Shooting game from lab 9 as a base. I added saving and loading using LitJSON. Implemented with ISaveable interface and TransformSaver class to handle the save. EnemySpawner was modified to implement the ISaveable interface. I used the SaveManager class from my Professor and modified it to save the score in a binary file. The game is saved with 'S' and loaded with 'L'. The state is saved in savefile.json and the score is saved in savefile.json.dat.
 
-![Diagram](./Lab9.png)
