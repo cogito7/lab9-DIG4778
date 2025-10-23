@@ -4,6 +4,7 @@ public class Target : MonoBehaviour
 {
     public float speed = 2f;
     public int points = 1;
+    public int type = 0;
 
     private Animator animator;
     public static event System.Action<int> OnTargetHit;//event to notify observers

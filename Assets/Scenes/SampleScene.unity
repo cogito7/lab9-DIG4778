@@ -542,6 +542,7 @@ MonoBehaviour:
   - {fileID: 392990402550210030, guid: 2b2dc64070935d44b96b30e966498286, type: 3}
   - {fileID: 6277610743226200041, guid: 5f3d843f7aa77b14798220d603bf1841, type: 3}
   spawnInterval: 2
+  _saveID: EnemySpawner
 --- !u!1 &1311463006
 GameObject:
   m_ObjectHideFlags: 0
